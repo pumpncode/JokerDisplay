@@ -409,7 +409,7 @@ JokerDisplay.text_format = function(text, node)
     text = JokerDisplay.retrigger_format(text, node, card)
     text = JokerDisplay.number_format(text)
 
-    return text
+    return tostring(text)
 end
 
 JokerDisplay.retrigger_format = function(num, node, card)
@@ -543,7 +543,7 @@ function CardArea:draw(...)
         if self.children and self.children.area_uibox and self.children.area_uibox.UIRoot then
             local container_row = self.children.area_uibox.UIRoot.children[1]
             if container_row and container_row.draw_self then
-                container_row:draw_self()  -- Draws just the background box
+                container_row:draw_self() -- Draws just the background box
             end
         end
         cardarea_draw_ref(self, ...) -- Draw jokers (vanilla)

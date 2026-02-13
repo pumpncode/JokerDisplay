@@ -135,6 +135,7 @@ if not SMODS then
 
     local jokerdisplay_game_main_menu_ref = Game.main_menu
     function Game:main_menu(change_context)
+        init_localization()
         if not JokerDisplay.Global_Definitions then
             JokerDisplay.Global_Definitions = JokerDisplay.load_file("definitions/global_definitions.lua")() or {}
             JokerDisplay.Definitions = JokerDisplay.load_file("definitions/display_definitions.lua")() or {}

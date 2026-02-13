@@ -1468,7 +1468,9 @@ return {
         calc_function = function(card)
             local highlighted = (G.hand and G.hand.highlighted) or {}
             local is_trading_card_discard = #highlighted == 1
-            card.joker_display_values.active = G.GAME.blind and G.GAME.blind.in_blind and
+            local in_blind = G.GAME.blind and G.GAME.blind.in_blind or G.STATE == G.STATES.SELECTING_HAND or
+                G.STATE == G.STATES.HAND_PLAYED or G.STATE == G.STATES.DRAW_TO_HAND
+            card.joker_display_values.active = in_blind and
                 G.GAME.current_round.discards_used == 0 and G.GAME.current_round.discards_left > 0
             card.joker_display_values.is_active = card.joker_display_values.active
             card.joker_display_values.active_text = localize(card.joker_display_values.is_active and "jdis_active" or
@@ -2387,7 +2389,9 @@ return {
             { text = ")" },
         },
         calc_function = function(card)
-            card.joker_display_values.is_active = G.GAME.blind and G.GAME.blind.in_blind and
+            local in_blind = G.GAME.blind and G.GAME.blind.in_blind or G.STATE == G.STATES.SELECTING_HAND or
+                G.STATE == G.STATES.HAND_PLAYED or G.STATE == G.STATES.DRAW_TO_HAND
+            card.joker_display_values.is_active = in_blind and
                 G.GAME.current_round.discards_used <= 0 and G.GAME.current_round.discards_left > 0
             card.joker_display_values.active = (card.joker_display_values.is_active and localize("jdis_active") or
                 localize("jdis_inactive"))

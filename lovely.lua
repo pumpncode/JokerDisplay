@@ -134,7 +134,7 @@ if not SMODS then
     JokerDisplay.load_file("src/config_tab.lua")()
 
     local jokerdisplay_game_main_menu_ref = Game.main_menu
-    function Game:main_menu(change_context)
+    function Game:main_menu(...)
         init_localization()
         if not JokerDisplay.Global_Definitions then
             JokerDisplay.Global_Definitions = JokerDisplay.load_file("definitions/global_definitions.lua")() or {}
@@ -143,7 +143,7 @@ if not SMODS then
             JokerDisplay.Edition_Definitions = JokerDisplay.load_file("definitions/edition_definitions.lua")() or {}
         end
 
-        return jokerdisplay_game_main_menu_ref(self, change_context)
+        return jokerdisplay_game_main_menu_ref(self, ...)
     end
 
     -- Copied from SleepyG11/HandyBalatro <3
